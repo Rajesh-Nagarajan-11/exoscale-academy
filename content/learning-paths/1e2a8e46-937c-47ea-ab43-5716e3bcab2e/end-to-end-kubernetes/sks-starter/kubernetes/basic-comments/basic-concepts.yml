@@ -1,7 +1,7 @@
 id: b21265ea-a9c7-42cd-a07c-3237bccd3200
 name: Starter Image-2
 schemaVersion: designs.meshery.io/v1beta1
-version: 0.0.103
+version: 0.0.114
 metadata:
   resolvedAliases: {}
 components:
@@ -40,8 +40,8 @@ components:
       opacity: 1
       padding: 6
       position:
-        x: 290.35792168509323
-        y: 76.8476620799292
+        x: 315.44084166655136
+        y: 67.99941475833123
       primaryColor: '#00B39F'
       secondaryColor: '#FFDE00'
       shape: rectangle
@@ -62,7 +62,7 @@ components:
       published: false
     configuration:
       metadata:
-        namespace: ""
+        namespace: Basic-Concepts
     component:
       version: core.meshery.io/v1alpha1
       kind: TextBox
@@ -97,8 +97,8 @@ components:
       opacity: 1
       padding: 6
       position:
-        x: 263.15616355559365
-        y: 69.41186365281283
+        x: 288.2390835370518
+        y: 60.56361633121485
       primaryColor: '#326CE5'
       secondaryColor: '#7aa1f0'
       shape: circle
@@ -123,7 +123,7 @@ components:
         labels:
           newKey: ""
         name: ""
-        namespace: ""
+        namespace: Basic-Concepts
     component:
       version: apps/v1
       kind: DeploymentList
@@ -158,8 +158,8 @@ components:
       opacity: 1
       padding: 6
       position:
-        x: 226.77480671777215
-        y: -3.853685544189421
+        x: 251.85772669923028
+        y: -12.701932865787406
       primaryColor: '#326CE5'
       secondaryColor: '#7aa1f0'
       shape: round-hexagon
@@ -208,7 +208,7 @@ components:
     configuration:
       metadata:
         name: ""
-        namespace: ""
+        namespace: Basic-Concepts
     component:
       version: meshery.layer5.io/v1alpha1
       kind: KubernetesConnection
@@ -216,7 +216,7 @@ components:
   - id: b39dce69-f250-4277-924e-a899955ad1e0
     schemaVersion: components.meshery.io/v1beta1
     version: v1.0.0
-    displayName: ""
+    displayName: Basic-Concepts
     description: ""
     format: JSON
     modelReference:
@@ -235,8 +235,8 @@ components:
       border-width: 2
       height: 80
       position:
-        x: 290.114278716336
-        y: 45.09987575840774
+        x: 315.44084166655136
+        y: 37.23990794627191
       primaryColor: '#326CE5'
       secondaryColor: '#7aa1f0'
       shape: rectangle
@@ -257,7 +257,7 @@ components:
       source_uri: git://github.com/kubernetes/kubernetes/master/api/openapi-spec/v3
     configuration:
       metadata:
-        name: ""
+        name: Basic-Concepts
     component:
       version: v1
       kind: Namespace
@@ -292,8 +292,8 @@ components:
       opacity: 1
       padding: 6
       position:
-        x: 205.7360268184571
-        y: 70.00511675949383
+        x: 230.81894679991524
+        y: 61.15686943789586
       primaryColor: '#326CE5'
       secondaryColor: '#7aa1f0'
       shape: round-rectangle
@@ -315,7 +315,7 @@ components:
     configuration:
       metadata:
         name: ""
-        namespace: ""
+        namespace: Basic-Concepts
     component:
       version: v1
       kind: Pod
@@ -351,8 +351,8 @@ components:
       opacity: 1
       padding: 12
       position:
-        x: 378.2026617148998
-        y: 67.4333885610049
+        x: 403.28558169635795
+        y: 58.58514123940693
       primaryColor: '#326CE5'
       secondaryColor: '#7aa1f0'
       shape: round-triangle
@@ -374,7 +374,7 @@ components:
     configuration:
       metadata:
         name: ""
-        namespace: ""
+        namespace: Basic-Concepts
     component:
       version: v1
       kind: Service
@@ -409,8 +409,8 @@ components:
       opacity: 1
       padding: 6
       position:
-        x: 327.19681063962224
-        y: 69.42375974893716
+        x: 352.2797306210804
+        y: 60.575512427339184
       primaryColor: '#326CE5'
       secondaryColor: '#7aa1f0'
       shape: round-rectangle
@@ -434,7 +434,7 @@ components:
     configuration:
       metadata:
         name: ""
-        namespace: ""
+        namespace: Basic-Concepts
     component:
       version: apps/v1
       kind: StatefulSet
