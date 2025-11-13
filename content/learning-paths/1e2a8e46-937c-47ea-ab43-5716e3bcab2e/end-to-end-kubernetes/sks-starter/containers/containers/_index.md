@@ -9,7 +9,7 @@ weight: 5
 
 
 ### Containers
-![container](container.png)
+{{< meshery-design-embed id="embedded-design-f3a953ad-2e6f-4977-b46f-6eaab996dd9b" src="container.js" >}}
 
 #### Containers
 
