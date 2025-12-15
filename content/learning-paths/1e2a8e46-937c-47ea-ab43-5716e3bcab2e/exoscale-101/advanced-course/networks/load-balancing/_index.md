@@ -100,7 +100,10 @@ Allow defining and composing firewall rules:
 - Traffic to and from the Internet can be blocked entirely (private instance)
 - Source address can be specified as a subnet or as another Security Group, or as a Public Security Group (which simply are Security Groups defined by Exoscale for specific purposes)
 
-![secuirty-groups](secuirty-groups.png)
+{{< meshery-design-embed
+id="embedded-design-1df080e7-da8e-4a48-8557-c21fbb117a1d"
+src="file.js"
+>}}
 
 Security Groups Examples
 
