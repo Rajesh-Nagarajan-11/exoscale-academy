@@ -40,10 +40,7 @@ Explained
 
 NOTE: Cannot be used for outgoing traffic
 
-{{< meshery-design-embed
-  id="embedded-design-0d879683-6584-4f85-a50e-9d2eea160fbf"
-  src="meip.js"
->}}
+{{< meshery-design-embed  id="embedded-design-0d879683-6584-4f85-a50e-9d2eea160fbf"  src="meip.js" >}}
 
 
 ### Comparison - Network Load Balancer / Managed Elastic IP
