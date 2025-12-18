@@ -30,9 +30,9 @@ site: check-go
 build:
 	hugo build
 
-## Build site for local consumption
+## Build site for preview with custom baseURL
 build-preview:
-	hugo --baseURL=$(BASEURL)
+	hugo build --baseURL=$(BASEURL)
 
 ## Empty build cache and run on your local machine.
 clean: 
