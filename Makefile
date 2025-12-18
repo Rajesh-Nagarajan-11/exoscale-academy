@@ -30,9 +30,9 @@ site: check-go
 build:
 	hugo build
 
-## Build site for preview with custom baseURL
+## Build site for preview with custom baseURL (includes drafts and future content)
 build-preview:
-	hugo build --baseURL=$(BASEURL)
+	hugo build -D -F --baseURL=$(BASEURL)
 
 ## Empty build cache and run on your local machine.
 clean: 
