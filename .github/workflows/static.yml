@@ -1,4 +1,4 @@
-# Simple workflow for deploying static content to GitHub Pages
+# Sample workflow for building and deploying a Hugo site to GitHub Pages
 name: preview-deploy
 
 on:
@@ -19,48 +19,59 @@ concurrency:
   group: "pages-${{ github.event.pull_request.number || github.run_id }}"
   cancel-in-progress: true
 
+# Default to bash
+defaults:
+  run:
+    shell: bash
+
 jobs:
-  # Single deploy job since we're just deploying
-  deploy:
-    environment:
-      name: pr-preview-${{ github.event.pull_request.number || github.run_id }}
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
+  # Build job
+  build:
+    runs-on: ubuntu-24.04
+    env:
+      HUGO_VERSION: 0.152.2
     steps:
+      - name: Install Hugo CLI
+        run: |
+          wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb \
+          && sudo dpkg -i ${{ runner.temp }}/hugo.deb          
+      - name: Install Dart Sass
+        run: sudo snap install dart-sass
       - name: Checkout
-        uses: actions/checkout@v4
-        with: 
+        uses: actions/checkout@v6
+        with:
           ref: ${{ github.event.pull_request.head.sha }}
           submodules: recursive
+          fetch-depth: 0
       - name: Setup Pages
-        uses: actions/configure-pages@v5
-      - name: Setup Hugo (Extended)
-        uses: peaceiris/actions-hugo@v3
-        with:
-          hugo-version: '0.147.9'
-          extended: true
-      - name: Install dependencies
-        run: make setup
-      - name: Build Academy
-        run: make build
+        id: pages
+        uses: actions/configure-pages@v6
+      - name: Install Node.js dependencies
+        run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
+      - name: Build with Hugo
+        env:
+          # For maximum backward compatibility with Hugo modules
+          HUGO_ENVIRONMENT: production
+          HUGO_ENV: production
+        run: |
+          hugo \
+            --gc \
+            --minify \
+            --baseURL "${{ steps.pages.outputs.base_url }}/"          
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload just the public folder
-          path: 'public'
-          
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-        
-      - name: Comment Preview URL on PR
-        if: github.event_name == 'pull_request_target'
-        uses: marocchino/sticky-pull-request-comment@v2
+          path: ./public
+
+  # Deployment job
+  deploy:
+    runs-on: ubuntu-24.04
+    needs: build
+    steps:
+      - name: Deploy PR Preview
+        uses: rossjrw/pr-preview-action@v1.6.3
         with:
-          message: |
-            🚀 **Preview deployment for PR #${{ github.event.pull_request.number }}**
-            
-            🌐 PR URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/pr-preview-${{ github.event.pull_request.number || github.run_id }}
-            > 📖 General Preview: ${{ steps.deployment.outputs.page_url }}
-            
-            This preview will be updated automatically when you push new commits to this PR.
+          source-dir: ./public
+          preview-branch: gh-pages
+          umbrella-dir: pr-preview
+          action: auto
