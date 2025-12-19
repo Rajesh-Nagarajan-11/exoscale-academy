@@ -1,4 +1,4 @@
-baseURL: https://layer5.github.io/exoscale-academy/
+baseURL: https://layer5io.github.io/exoscale-academy/
 title: Exoscale Academy
 canonifyURLs: true
 ignoreLogs: ['warning-goldmark-raw-html']
