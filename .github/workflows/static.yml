@@ -1,4 +1,4 @@
-# Sample workflow for building and deploying a Hugo site to GitHub Pages
+# Workflow for building and deploying Hugo PR previews to GitHub Pages
 name: preview-deploy
 
 on:
@@ -55,12 +55,7 @@ jobs:
             --gc \
             --minify \
             --baseURL "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/pr-preview/pr-${{ github.event.pull_request.number }}/"          
-      - name: Debug - List build output
-        run: |
-          echo "Listing ./public directory:"
-          ls -la ./public
-          echo "Checking if index.html exists:"
-          test -f ./public/index.html && echo "✅ index.html found" || echo "❌ index.html NOT found"          
+          
       - name: Deploy PR Preview
         uses: rossjrw/pr-preview-action@v1.6.3
         with:

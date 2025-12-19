@@ -1,4 +1,4 @@
-baseURL: /
+baseURL: https://layer5.github.io/exoscale-academy/
 title: Exoscale Academy
 ignoreLogs: ['warning-goldmark-raw-html']
 
